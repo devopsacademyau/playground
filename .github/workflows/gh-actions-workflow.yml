@@ -10,7 +10,7 @@ name: PR Comment
 on: 
    pull_request: 
     paths: 
-     - starkmatt/88/8
+     - starkmatt8/*
 
 
 jobs:
