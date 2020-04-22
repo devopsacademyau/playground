@@ -8,10 +8,7 @@ on:
     pull_request:
      branches:
         - playgroundv1
-jobs:
-  test:
-   runs-on: ubuntu-latest    
-       
+        
 steps: 
     uses: mshick/add-pr-comment@v1
     with:
