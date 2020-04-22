@@ -8,9 +8,9 @@
 
 name: PR Comment
 on: 
-    pull_request:
-    watch: 
-        -playgroundv1
+ pull_request:
+   branches: 
+    - playgroundv1
     
 
 jobs:
