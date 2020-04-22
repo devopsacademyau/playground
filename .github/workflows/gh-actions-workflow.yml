@@ -1,0 +1,24 @@
+# This is a basic workflow to help you get started with Actions
+
+name: PR Comment
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+    pull_request:
+      branches:
+        - playgroundv1
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+  steps:
+   uses: mshick/add-pr-comment@v1
+     with:
+        message: |
+        Great PR!
+        Doing some great work Sir :smile
+            
+            
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        allow-repeats: false
