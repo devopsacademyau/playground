@@ -6,18 +6,18 @@ name: PR Comment
 # events but only for the master branch
 on:
     pull_request:
-      branches:
+     branches:
         - playgroundv1
 jobs:
   test:
-    runs-on: ubuntu-latest
-    
-  steps:
-   uses: mshick/add-pr-comment@v1
-     with:
+   runs-on: ubuntu-latest    
+       
+steps: 
+    uses: mshick/add-pr-comment@v1
+    with:
         message: |
-        Great PR!
-        Doing some great work Sir :smile
+         Great PR!
+         Doing some great work Sir
             
             
         repo-token: ${{ secrets.GITHUB_TOKEN }}
