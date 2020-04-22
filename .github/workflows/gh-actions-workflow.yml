@@ -1,21 +1,27 @@
-# This is a basic workflow to help you get started with Actions
+# This workflow will triage pull requests and apply a label based on the
+# paths that are modified in the pull request.
+#
+# To use this workflow, you will need to set up a .github/labeler.yml
+# file with configuration.  For more information, see:
+# https://github.com/actions/labeler/blob/master/README.md
+
 
 name: PR Comment
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
-on:
+on: 
     pull_request:
-     branches:
-        - playgroundv1
-        
-steps: 
-    uses: mshick/add-pr-comment@v1
-    with:
-        message: |
-         Great PR!
-         Doing some great work Sir
-            
-            
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    watch: 
+        -playgroundv1
+    
+
+jobs:
+  comment:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: mshick/add-pr-comment@v1
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        message:  |
+            Great PR! Doing some great work
         allow-repeats: false
