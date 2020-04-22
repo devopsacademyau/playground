@@ -8,10 +8,10 @@
 
 name: PR Comment
 on: 
- pull_request:
-   branches: 
-    - playgroundv1
-    
+   pull_request: 
+    paths: 
+     - starkmatt/88/8
+
 
 jobs:
   comment:
