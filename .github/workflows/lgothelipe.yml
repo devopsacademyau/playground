@@ -2,7 +2,7 @@ name: lgothelipe-comment-pr
 on: 
     pull_request: 
         paths: 
-        - 'lgothelipe/*'
+        - lgothelipe/**
 jobs:
     comment:
         runs-on: ubuntu-latest
