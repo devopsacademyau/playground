@@ -10,5 +10,5 @@ jobs:
             - uses: mshick/add-pr-comment@v1
               with:
                   repo-token: ${{ secrets.LG_GITHUB_TOKEN }}
-                  message: Nice PR!👍
+                  message: Well done ${{ secrets.LG_MY_NAME }} ! This is a nice PR
                   allow-repeats: false
