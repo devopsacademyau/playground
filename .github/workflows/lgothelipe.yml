@@ -1,0 +1,21 @@
+
+name: Comment PR if files on folder change
+
+on: [pull_request]
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    steps:
+      - name: Get Changed Files
+        id: changed
+        uses: foodee/pr-includes-file-change@master
+        with:
+          paths: lgothelipe/*
+
+      - name: Echo Match
+        if: steps.changed.outputs.matched == 'true'
+        run: echo Matched
