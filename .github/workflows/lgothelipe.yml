@@ -2,7 +2,7 @@ name: Comment PR if files on folder change
 on: 
     pull_request: 
         paths: 
-        - 'lgothelipe/**'
+        - 'lgothelipe/*'
 jobs:
     comment:
         runs-on: ubuntu-latest
