@@ -1,4 +1,4 @@
-name: Comment PR if files on folder change
+name: lgothelipe-comment-pr
 on: 
     pull_request: 
         paths: 
