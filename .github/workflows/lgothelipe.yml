@@ -1,13 +1,13 @@
 name: Comment PR if files on folder change
 on: 
-   pull_request: 
+    pull_request: 
     paths: 
-     - 'lgothelipe/**'
+    - 'lgothelipe/**'
 jobs:
-  comment:
-    runs-on: ubuntu-latest
-    steps:
-	- uses: github-actions-up-and-running/pr-comment@v1.0.0
-	with:
-	repo-token: ${{ secrets.GITHUB_TOKEN }}
-	message: Nice PR!👍
+    comment:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: github-actions-up-and-running/pr-comment@v1.0.0
+        with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        message: Nice PR!👍
