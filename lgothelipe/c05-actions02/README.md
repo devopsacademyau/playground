@@ -32,20 +32,24 @@ jobs:
 
 ```
 name: lgothelipe-c05-actions02
-
 on:
     pull_request:
       paths: 
-          - 'lgothelipe/**'
+          - lgothelipe/**
 jobs:
-
   build:
     runs-on: ubuntu-latest
     env:
         SHORT_SHA: ${GITHUB_SHA::6}
-
+        IMAGE_NAME: c05-image
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file lgothelipe/c05-actions02/Dockerfile --tag c06-image:$SHORT_SHA
+      run: docker build . --file lgothelipe/c05-actions02/Dockerfile --tag $IMAGE_NAME:$SHORT_SHA
+    - name: Log into docker hub
+      run: docker login -u ${{ secrets.LG_DOCKER_USERNAME }} -p ${{ secrets.LG_DOCKER_PASSWORD }}
+    - name: Push image
+      run: |
+        docker tag $IMAGE_NAME:$SHORT_SHA ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$SHORT_SHA
+        docker push ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$SHORT_SHA
 ```
