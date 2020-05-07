@@ -31,7 +31,6 @@ jobs:
 ## Using 3M
 
 ```
-
 name: lgothelipe-c05-actions02
 on:
     pull_request:
@@ -41,27 +40,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-        SHORT_SHA: ${GITHUB_SHA:6}
         IMAGE_NAME: c05-image
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build -f lgothelipe/c05-actions02/Dockerfile -t $IMAGE_NAME:$SHORT_SHA
+      run: docker build -f lgothelipe/c05-actions02/Dockerfile -t $IMAGE_NAME:$(echo ${GITHUB_SHA} | cut -c1-6)
     - name: Log into docker hub
       run: docker login -u ${{ secrets.LG_DOCKER_USERNAME }} -p ${{ secrets.LG_DOCKER_PASSWORD }}
     - name: Push image
       run: |
-        docker tag $IMAGE_NAME:$SHORT_SHA ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$SHORT_SHA
-        docker push ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$SHORT_SHA
+        docker tag $IMAGE_NAME:$(echo ${GITHUB_SHA} | cut -c1-6) ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$(echo ${GITHUB_SHA} | cut -c1-6)
+        docker push ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$(echo ${GITHUB_SHA} | cut -c1-6)
   comment:
     runs-on: ubuntu-latest
     env:
-      SHORT_SHA: ${GITHUB_SHA:6}
       IMAGE_NAME: c05-image
     steps:
       - uses: mshick/add-pr-comment@v1
         with:
           repo-token: ${{ secrets.LG_GITHUB_TOKEN }}
-          message: Image name= c05-image:$SHORT_SHA
+          message: Image name= $IMAGE_NAME:$(echo ${GITHUB_SHA} | cut -c1-6)
           allow-repeats: false
 ```
