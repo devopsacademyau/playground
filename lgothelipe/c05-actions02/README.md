@@ -31,6 +31,7 @@ jobs:
 ## Using 3M
 
 ```
+
 name: lgothelipe-c05-actions02
 on:
     pull_request:
@@ -40,7 +41,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-        SHORT_SHA: ${GITHUB_SHA::6}
+        SHORT_SHA: ${GITHUB_SHA:6}
         IMAGE_NAME: c05-image
     steps:
     - uses: actions/checkout@v2
@@ -54,10 +55,13 @@ jobs:
         docker push ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$SHORT_SHA
   comment:
     runs-on: ubuntu-latest
+    env:
+      SHORT_SHA: ${GITHUB_SHA:6}
+      IMAGE_NAME: c05-image
     steps:
       - uses: mshick/add-pr-comment@v1
         with:
           repo-token: ${{ secrets.LG_GITHUB_TOKEN }}
-          message: Image name= c05-image:${GITHUB_SHA::6}
+          message: Image name= c05-image:$SHORT_SHA
           allow-repeats: false
 ```
