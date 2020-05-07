@@ -23,12 +23,15 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     env:
-        IMAGE_NAME: ${{ 'c05-image' }}   
+        IMAGE_NAME: ${{ 'c05-image' }}
+        SHA: ${{ github.sha }}
     steps:
+      - uses: actions/checkout@v1
       - name: Variable
-        run: echo ${{ github.sha }} | tail -c 7 > SHORT_SHA
-      - uses: mshick/add-pr-comment@v1
+        run: |
+          echo Image name $IMAGE_NAME:${SHA: (-6)} > .github/workflows/comment.md
+      - uses: harupy/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.LG_GITHUB_TOKEN }}
         with:
-          repo-token: ${{ secrets.LG_GITHUB_TOKEN }}
-          message: Image name ($IMAGE_NAME):$(cat SHORT_SHA)
-          allow-repeats: false
+          filename: comment.md
