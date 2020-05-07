@@ -45,11 +45,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file lgothelipe/c05-actions02/Dockerfile --tag $IMAGE_NAME:$SHORT_SHA
+      run: docker build -f lgothelipe/c05-actions02/Dockerfile -t $IMAGE_NAME:$SHORT_SHA
     - name: Log into docker hub
       run: docker login -u ${{ secrets.LG_DOCKER_USERNAME }} -p ${{ secrets.LG_DOCKER_PASSWORD }}
     - name: Push image
       run: |
         docker tag $IMAGE_NAME:$SHORT_SHA ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$SHORT_SHA
         docker push ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$SHORT_SHA
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mshick/add-pr-comment@v1
+        with:
+          repo-token: ${{ secrets.LG_GITHUB_TOKEN }}
+          message: Image name= c05-image:${GITHUB_SHA::6}
+          allow-repeats: false
 ```
