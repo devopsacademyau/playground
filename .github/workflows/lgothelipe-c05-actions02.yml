@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build -t c05-image:test123 -f lgothelipe/c05-actions02/Dockerfile
+      run: docker build -t c05-image:test123 -f lgothelipe/c05-actions02/Dockerfile .
     - name: Log into docker hub
       run: docker login -u ${{ secrets.LG_DOCKER_USERNAME }} -p ${{ secrets.LG_DOCKER_PASSWORD }}
     - name: Push image
