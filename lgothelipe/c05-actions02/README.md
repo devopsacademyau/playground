@@ -40,25 +40,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-        IMAGE_NAME: c05-image
+        IMAGE_NAME: ${{ 'c05-image' }}
     steps:
     - uses: actions/checkout@v2
+    - name: Variable
+      run: echo ${{ github.sha }} | tail -c 7 > SHORT_SHA
     - name: Build the Docker image
-      run: docker build -f lgothelipe/c05-actions02/Dockerfile -t $IMAGE_NAME:$(echo ${GITHUB_SHA} | cut -c1-6)
+      run: docker build -t $IMAGE_NAME:$(cat SHORT_SHA) -f lgothelipe/c05-actions02/Dockerfile .
     - name: Log into docker hub
       run: docker login -u ${{ secrets.LG_DOCKER_USERNAME }} -p ${{ secrets.LG_DOCKER_PASSWORD }}
     - name: Push image
       run: |
-        docker tag $IMAGE_NAME:$(echo ${GITHUB_SHA} | cut -c1-6) ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$(echo ${GITHUB_SHA} | cut -c1-6)
-        docker push ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$(echo ${GITHUB_SHA} | cut -c1-6)
+        docker tag $IMAGE_NAME:$(cat SHORT_SHA) ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$(cat SHORT_SHA)
+        docker push ${{ secrets.LG_DOCKER_USERNAME }}/$IMAGE_NAME:$(cat SHORT_SHA)
   comment:
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: c05-image
+        IMAGE_NAME: ${{ 'c05-image' }}
+        SHA: ${{ github.sha }}
     steps:
-      - uses: mshick/add-pr-comment@v1
+      - uses: actions/checkout@v1
+      - name: Variable
+        run: |
+          echo Image name $IMAGE_NAME:${SHA: (-6)} > .github/workflows/comment.md
+      - uses: harupy/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.LG_GITHUB_TOKEN }}
         with:
-          repo-token: ${{ secrets.LG_GITHUB_TOKEN }}
-          message: Image name= $IMAGE_NAME:$(echo ${GITHUB_SHA} | cut -c1-6)
-          allow-repeats: false
+          filename: comment.md
 ```
