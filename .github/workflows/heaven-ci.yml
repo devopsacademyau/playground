@@ -1,14 +1,16 @@
-name: heaven ci comment pr
+name: comment PR
 
 on: 
-  pull_requests:
+  pull_request:
     paths:
-      'hsy3418/*'
+      - hsy3418/*
 
 jobs: 
-  build:
-    name: comment on pr
-    uses: github-actions-up-and-running/pr-comment@v1.0.0
-    with:
-      repo-token: ${{ secrets.HH_SECRET_GITHUB_TOKEN }}
-      message: Well done ${{secrets.HH_NAME}} This is a nice PR!
+  comment:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: mshick/add-pr-comment@v1
+      with:
+        repo-token: ${{ secrets.HH_SECRET_GITHUB_TOKEN }}
+        message: Well done ${{secrets.HH_NAME}} This is a nice PR!
