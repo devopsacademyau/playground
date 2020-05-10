@@ -1,7 +1,9 @@
 name: commenter
-on: [pull_request]
-paths:
-    - christina-roperto/
+on:
+  pull_request:
+    paths:
+      - christina-roperto/
+
 
 jobs:
   build:
