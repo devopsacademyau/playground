@@ -6,11 +6,13 @@
 # https://github.com/actions/labeler/blob/master/README.md
 
 
-name: PR Comment
-on: 
-   pull_request: 
-    paths: 
-     - starkmatt/
+name: G'day
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - starkmatt/**
 
 
 jobs:
