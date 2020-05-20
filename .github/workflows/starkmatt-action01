@@ -6,20 +6,17 @@
 # https://github.com/actions/labeler/blob/master/README.md
 
 
-name: G'day
-
-on:
-  push:
-    branches: [ master ]
-    paths:
-      - starkmatt/**
+name: comment
+on: 
+    pull_request: 
+        paths: 
+        - starkmatt/**
 
 
 jobs:
   comment:
 
     runs-on: ubuntu-latest
-
     steps:
     - uses: mshick/add-pr-comment@v1
       with:
