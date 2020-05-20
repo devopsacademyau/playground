@@ -6,20 +6,17 @@
 # https://github.com/actions/labeler/blob/master/README.md
 
 
-name: comment
+name: Testing comment
 on: 
     pull_request: 
         paths: 
         - starkmatt/**
-
-
 jobs:
-  comment:
-
-    runs-on: ubuntu-latest
-    steps:
-    - uses: mshick/add-pr-comment@v1
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
-        message: Great PR! Doing some great work
-        allow-repeats: false
+    comment:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: mshick/add-pr-comment@v1
+              with:
+                  repo-token: ${{ secrets.LG_GITHUB_TOKEN }}
+                  message: Well done ${{ secrets.LG_MY_NAME }} ! This is a nice PR
+                  allow-repeats: false
