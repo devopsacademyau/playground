@@ -5,10 +5,11 @@ on:
         - starkmatt/**
 jobs:
     comment:
+        name: Commenter
         runs-on: ubuntu-latest
         steps:
             - uses: mshick/add-pr-comment@v1
               with:
                   repo-token: ${{ secrets.LG_GITHUB_TOKEN }}
-                  message: Well done ${{ secrets.LG_MY_NAME }} ! This is a nice PR
+                  message: Well done Matteh
                   allow-repeats: false
