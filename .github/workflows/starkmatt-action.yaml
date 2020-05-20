@@ -1,15 +1,15 @@
 name: PR Comments
 on: 
-    pull_request: 
-        paths: 
+  pull_request: 
+    paths: 
         - starkmatt/**
 jobs:
-    gif:
-        name: gif
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - name: PR Action
-                uses: koushikmohan1996/action-pr-gifs@master
-                with:
-                    GITHUB_TOKEN: ${{ secrets.SM_GIT_HUB_TOKEN }}
+  gif:
+    name: gif
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: PR Action
+        uses: koushikmohan1996/action-pr-gifs@master
+        with:
+            GITHUB_TOKEN: ${{ secrets.SM_GIT_HUB_TOKEN }}
