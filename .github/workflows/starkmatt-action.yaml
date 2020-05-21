@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: mshick/add-pr-comment@v1
         with:
+            repo-token: ${{ secrets.SM_GIT_HUB_TOKEN }}
             message: Great PR Matteh!
-            GITHUB_TOKEN: ${{ secrets.SM_GIT_HUB_TOKEN }}
             allow-repeats: false 
