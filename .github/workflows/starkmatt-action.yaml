@@ -4,12 +4,12 @@ on:
     paths: 
         - starkmatt/**
 jobs:
-  gif:
-    name: gif
+  PR-Commenter:
+    name: PR
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: PR Action
-        uses: koushikmohan1996/action-pr-gifs@master
+      - uses: mshick/add-pr-comment@v1
         with:
+            message: Great PR Matteh!
             GITHUB_TOKEN: ${{ secrets.SM_GIT_HUB_TOKEN }}
+            allow-repeats: false 
