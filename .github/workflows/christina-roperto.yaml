@@ -12,5 +12,4 @@ jobs:
       - uses: github-actions-up-and-running/pr-comment@v1.0.0
         with:
           repo-token: ${{ secrets.CT_GH_TOKEN }}
-          message: Well done ${{secrets.HH_NAME}} ! This is a nice PR
-          
+          message: Well done ${{secrets.CR_NAME}} ! This is a nice PR
