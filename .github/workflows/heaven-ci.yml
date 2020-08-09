@@ -13,4 +13,4 @@ jobs:
     - uses: mshick/add-pr-comment@v1
       with:
         repo-token: ${{ secrets.HH_SECRET_GITHUB_TOKEN }}
-        message: Well done ${{secrets.HH_NAME}} This is a nice PR!
+        message: Well done test ${{secrets.HH_NAME}} This is a nice PR!
