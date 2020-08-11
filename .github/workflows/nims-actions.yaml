@@ -1,0 +1,17 @@
+name: NimsPRCommenter
+on: 
+  pull_request:
+    paths: 
+    - nimmi89/**
+jobs:
+  PRcomment:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: github-actions-up-and-running/pr-comment@v1.0.0
+      with:
+        repo-token: "${{ secrets.NIMS_GH_TOKEN }}"
+        message: Well done "${{ secrets.NIMS_NAME }}" ! This is a nice PR
+
+
+
+
