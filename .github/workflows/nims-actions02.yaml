@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
         IMAGE_NAME: c05-actions02:${{github.sha}} 
-      steps:
+    steps:
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Build Image and Push to registry
