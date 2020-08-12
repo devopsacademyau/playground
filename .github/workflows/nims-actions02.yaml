@@ -1,0 +1,42 @@
+name: Publish Docker image
+on:
+  pull_request:
+    paths:
+    - nimmi89/c05-actions02/**
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    env:
+        IMAGE_NAME: c05-actions02:${{github.sha}} 
+      steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Build Image and Push to registry
+        run : make build_push
+                     
+  
+  pr_commenter:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: mshick/add-pr-comment@v1
+      with:
+        repo-token: "${{ secrets.NIMS_GH_TOKEN }}"
+        message: Well done! Image Pushed $IMAGE_NAME!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
