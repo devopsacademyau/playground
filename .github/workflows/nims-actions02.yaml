@@ -25,7 +25,7 @@ jobs:
     - uses: mshick/add-pr-comment@v1
       with:
         repo-token: "${{ secrets.NIMS_GH_TOKEN }}"
-        message: Well done! Image Pushed $IMAGE_NAME!!
+        message: Well done! Image Pushed ${{ IMAGE_NAME }}!!
 
 
 
