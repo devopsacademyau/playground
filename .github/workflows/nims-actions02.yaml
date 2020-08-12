@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+      - name: Login into docker hub
+        run: docker login -u ${{ secrets.NIMS_DOCKER_UNAME }} -p ${{ secrets.NIMS_DOCKER_PASSWORD }}
       - name: Build Image and Push to registry
         run : make build_push
         working-directory: nimmi89/c05-actions02/
