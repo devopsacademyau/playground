@@ -9,11 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
         IMAGE_NAME: c05-actions02:${{github.sha}} 
-      steps:
+    steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+      - name: Login into docker hub
+        run: docker login -u ${{ secrets.NIMS_DOCKER_UNAME }} -p ${{ secrets.NIMS_DOCKER_PASSWORD }}
       - name: Build Image and Push to registry
         run : make build_push
+        working-directory: nimmi89/c05-actions02/
                      
   
   pr_commenter:
@@ -22,7 +25,7 @@ jobs:
     - uses: mshick/add-pr-comment@v1
       with:
         repo-token: "${{ secrets.NIMS_GH_TOKEN }}"
-        message: Well done! Image Pushed $IMAGE_NAME!!
+        message: Well done! Image Pushed ${{ IMAGE_NAME }}!!
 
 
 
