@@ -1,4 +1,4 @@
-name: ga-actions-workflow
+name: gh-alanlima-pr
 
 on:
   pull_request:
@@ -17,6 +17,6 @@ jobs:
         uses: jungwinter/comment@v1
         with:
           type: create
-          body: "Well done ${{ secrets.ALIMA_NAME }} ! This is a nice PR"
+          body: "Well done **${{ secrets.ALIMA_NAME }}**! This is a nice PR"
           issue_number: ${{ github.event.number }}
           token: ${{ secrets.ALIMA_TOKEN }}
