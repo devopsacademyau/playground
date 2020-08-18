@@ -13,9 +13,9 @@ push:
 .PHONY:push
 
 login:
-	@echo "${DOCKER_TOKEN}" | docker login \
+	@docker login \
 		--username ${DOCKER_REGISTRY} \
-		--password-stdin
+		--password ${DOCKER_TOKEN}
 .PHONY:login
 
 get_dockerhub_url:
