@@ -1,0 +1,38 @@
+name: on-pr-push-dockerhub
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'alanlima/c05-actions02/**/*'
+
+jobs:
+  push_image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v2
+
+      - name: Build and Push Image
+        working-directory: 'alanlima/c05-actions02'
+        run: |
+          make build
+          make login DOCKER_TOKEN=${{ secrets.ALIMA_DOCKER_TOKEN }}
+          make push
+
+      - name: Get DockerHub Tag Url
+        id: dockerhub_url
+        run: make get_dockerhub_url
+
+      - name: Add Comment
+        uses: jungwinter/comment@v1
+        with:
+          type: create
+          issue_number: ${{ github.event.number }}
+          token: ${{ secrets.ALIMA_TOKEN }}
+          body: |
+            Hi **${{ secrets.ALIMA_NAME }}**
+            A new docker image was built and pushed to docker hub.
+            ${{ steps.dockerhub_url.outputs }}
