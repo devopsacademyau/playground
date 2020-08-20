@@ -1,9 +1,9 @@
 name: "Raghu Github Actions C05-01"
 
 on:
-    pull_request: [master]
-    paths:
-        - "raghunadhpokkalath/**"
+    pull_request:
+        paths:
+            - "raghunadhpokkalath/**"
 jobs:
     pr_comment:
         runs_on: ubuntu-latest
