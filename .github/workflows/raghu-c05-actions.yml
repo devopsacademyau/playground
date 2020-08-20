@@ -1,3 +1,5 @@
+name: "Raghu Github Actions C05-01"
+
 on:
     pull_request: [master]
     paths:
