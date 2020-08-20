@@ -5,10 +5,10 @@ on:
         paths:
             - "raghunadhpokkalath/**"
 jobs:
-    pr_comment:
-        runs_on: ubuntu-latest
-        steps:
-            uses: github-actions-up-and-running/pr-comment@v1.0.0
-            with:
-                repo-token: ${{ secrets.RAGHU_PAT }}
-                message: Well done ${{ secrets.RAGHU_NAME }}! This is a nice PRN
+    prcomment:
+    runs_on: ubuntu-latest
+    steps:
+    - uses: github-actions-up-and-running/pr-comment@v1.0.0
+    with:
+        - repo-token: ${{ secrets.RAGHU_PAT }}
+        - message: Well done ${{ secrets.RAGHU_NAME }}! This is a nice PRN
