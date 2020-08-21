@@ -1,6 +1,8 @@
 name: Publish Docker image
 on:
   pull_request:
+    branches:
+    - master
     paths:
     - nimmi89/c05-actions02/**                                             
 jobs:
@@ -12,20 +14,24 @@ jobs:
         uses: actions/checkout@v2
       - name: Login into docker hub
         run: make login
+        working-directory: 'nimmi89/c05-actions02'
         env:
           DOCKER_PASSWORD: ${{ secrets.NIMS_DOCKER_PASSWORD }}
+      - name: Set outputs
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
       - name: Build Image and Push to registry
+        working-directory: 'nimmi89/c05-actions02'
         run : make build_push
+      - name: Create Pull request comment
+        uses: mshick/add-pr-comment@v1
+        with:
+          repo-token: "${{ secrets.NIMS_GH_TOKEN }}"
+          message: Well done! Image Pushed c05-actions02:${{ steps.vars.outputs.sha_short}}!!
         
                      
   
-  pr_commenter:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: mshick/add-pr-comment@v1
-      with:
-        repo-token: "${{ secrets.NIMS_GH_TOKEN }}"
-        message: Well done! Image Pushed c05-actions02:${{ GITHUB_SHA }}!!
+  
 
 
 

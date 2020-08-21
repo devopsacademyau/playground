@@ -12,7 +12,7 @@ build_push: build push
 .PHONY: login
 login: #Login into docker hub
 	@echo 'Login into docker hub'
-	docker login -u $(DOCKER_REGISTRY) -p $DOCKER_PASSWORD
+	docker login -u $(DOCKER_REGISTRY) -p $(DOCKER_PASSWORD)
 
 
 .PHONY: build
