@@ -3,6 +3,7 @@
 
 TAG = $(shell git rev-parse --short HEAD) 
 DOCKER_REGISTRY = netizen89
+IMAGE_NAME = c05-actions02
 
 
 .PHONY: build_push
