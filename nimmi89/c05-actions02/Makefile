@@ -7,7 +7,7 @@ TAG = $(shell git rev-parse --short HEAD)
 .PHONY: build_push
 build_push: build push
 
-# DOCKER TASKS
+
 .PHONY: build
 build: ## Build the container
 	@echo 'BUILDING THE IMAGE'
