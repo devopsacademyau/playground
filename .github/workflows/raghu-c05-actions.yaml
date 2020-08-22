@@ -13,4 +13,4 @@ jobs:
         with:
           message: |
             Well done ${{ secrets.RAGHU_NAME }}! This is a nice PRN
-          allow-repeats: true
+          allow-repeats: false
