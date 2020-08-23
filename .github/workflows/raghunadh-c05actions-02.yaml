@@ -16,6 +16,7 @@ jobs:
           cd raghunadhpokkkalath
           make build
           DOCKER_PAT=${{ secrets.RAGHU_DOCKER_PAT }} make push
+      - name: "Create Pull Request comment"
         uses: mshick/add-pr-comment@v1
         env:
           GITHUB_TOKEN: ${{ secrets.RAGHU_PAT }}
