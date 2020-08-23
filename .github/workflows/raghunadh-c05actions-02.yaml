@@ -11,9 +11,7 @@ jobs:
         uses: actions/checkout@v2.1.0    
       - name: "Docker Build and Push"
         run: |
-          echo "list folder"
-          ls
-          cd raghunadhpokkkalath
+          cd raghunadhpokkalath/c05-actions02
           make build
           DOCKER_PAT=${{ secrets.RAGHU_DOCKER_PAT }} make push
       - name: "Create Pull Request comment"
