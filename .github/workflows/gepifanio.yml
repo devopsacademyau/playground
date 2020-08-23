@@ -10,29 +10,20 @@ jobs:
     steps:
       - name: Code Checkout
         uses: actions/checkout@v2
-    
-      - name: Has Changed Path
-        uses: MarceloPrado/has-changed-path@v1.0
-        id: changed-docker
-        with:
-          paths: 'gepifanio/c05-actions02/**'
 
       - name: Get outputs
-        if: steps.changed-docker.outputs.changed == 'true'
         working-directory: 'gepifanio/c05-actions02'
         id: vars
         shell: bash
         run: make github_variables
 
       - name: build and publish docker image
-        if: steps.changed-docker.outputs.changed == 'true'
         run: make all
         working-directory: 'gepifanio/c05-actions02'
         env:
           GEPIFANIO_DOCKER_ACCESS_TOKEN: ${{ secrets.GEPIFANIO_DOCKER_ACCESS_TOKEN }}
 
       - name: comment image pushed
-        if: steps.changed-docker.outputs.changed == 'true'
         uses: nickatnight/add-pr-comment-action@v1    
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
