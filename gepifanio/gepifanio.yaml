@@ -8,19 +8,10 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps: 
-    - name: comment on PR gepifanio
-      uses: actions/github-script@v1
-      with:
-        GITHUB_TOKEN: '${{ secrets.GEPIFANIO_TOKEN }}'
-        script: |
-          var PR_HEAD_USERREPO = process.env.PR_HEAD_USERREPO;
-          var PR_HEAD_SHA = process.env.PR_HEAD_SHA;
-          github.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `Well done ${PR_HEAD_USERREPO}/${PR_HEAD_SHA} ! This is a nice PR`
-          })
-      env:
-        PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        PR_HEAD_USERREPO: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: comment pr
+        uses: nickatnight/add-pr-comment-action@v1    
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          body: "Well done **${{ secrets.GEPIFANIO_USER_NAME_TOKEN }}**! This is a nice PR"
+          allow_duplicates: false
