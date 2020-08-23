@@ -15,7 +15,7 @@ jobs:
         uses: MarceloPrado/has-changed-path@v1.0
         id: changed-docker
         with:
-          paths: gepifanio/c05-actions02
+          paths: 'gepifanio/c05-actions02/**'
 
       - name: Get outputs
         if: steps.changed-docker.outputs.changed == 'true'
