@@ -11,7 +11,13 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v2
 
+      - uses: marceloprado/has-changed-path@v1
+        id: changed-docker
+        with:
+          paths: gepifanio/c05-actions02
+
       - name: build and publish docker image
+        if: steps.changed-docker.outputs.changed == 'true'
         run: make all
         working-directory: 'gepifanio/c05-actions02'
         env:
