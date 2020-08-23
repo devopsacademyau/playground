@@ -19,3 +19,7 @@ build:
 push:
 	docker push ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}:${COMMIT_SHA}
 .PHONY: push
+
+github_variables:
+	@echo "::set-output name=image_name::${DOCKER_HUB_USERNAME}/${IMAGE_NAME}:${COMMIT_SHA}"
+.PHONY:github_variables
