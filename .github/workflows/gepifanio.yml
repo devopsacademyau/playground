@@ -10,8 +10,9 @@ jobs:
     steps:
       - name: Code Checkout
         uses: actions/checkout@v2
-
-      - uses: marceloprado/has-changed-path@v1
+    
+      - name: Has Changed Path
+        uses: MarceloPrado/has-changed-path@v1.0
         id: changed-docker
         with:
           paths: gepifanio/c05-actions02
