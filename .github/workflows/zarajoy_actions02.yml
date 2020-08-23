@@ -21,7 +21,7 @@ jobs:
         DOCKER_PW: ${{ secrets.ZARAJOY_DOCKER_PW }}
 
     - name: comment
-    - uses: mshick/add-pr-comment@v1
+      uses: mshick/add-pr-comment@v1
       with:
-        message: Well done "${{ secrets.ZARAJOY_NAME }}" ! This is a nice PR.
+        message: Well done "${{ secrets.ZARAJOY_NAME }}" ! This is a nice PR!!.
         repo-token: "${{ secrets.ZARAJOY_TOKEN }}"
