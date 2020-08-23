@@ -1,4 +1,4 @@
-name: Pull Request Comment
+name: gepifanio
 on:
     pull_request:
         types: [opened]
