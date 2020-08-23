@@ -5,18 +5,22 @@ on:
         paths: 'gepifanio/**'
 
 jobs:
-  comment:
+  main:
     runs-on: ubuntu-latest
-    steps: 
-      - name: comment pr
-        uses: nickatnight/add-pr-comment-action@v1    
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          body: "Well done **${{ secrets.GEPIFANIO_USER_NAME_TOKEN }}**! This is a nice PR"
-          allow_duplicates: false
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v2
+
       - name: build and publish docker image
         run: make all
         working-directory: 'gepifanio/c05-actions02'
         env:
           GEPIFANIO_DOCKER_ACCESS_TOKEN: ${{ secrets.GEPIFANIO_DOCKER_ACCESS_TOKEN }}
+      
+      - name: comment pr
+        uses: nickatnight/add-pr-comment-action@v1    
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          body: "Well done **${{ secrets.GEPIFANIO_USER_NAME_TOKEN }}**! This is a nice PR"
+          allow_duplicates: false
