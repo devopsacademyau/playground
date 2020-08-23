@@ -20,7 +20,7 @@ jobs:
       env: 
         DOCKER_PW: ${{ secrets.ZARAJOY_DOCKER_PW }}
 
-      c05_actions02_comment:
+    - name: comment
     - uses: mshick/add-pr-comment@v1
       with:
         message: Well done "${{ secrets.ZARAJOY_NAME }}" ! This is a nice PR.
