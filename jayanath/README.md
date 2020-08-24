@@ -1,1 +1,1 @@
-GitHub Actions Rocks!
+GitHub Actions Rocks! ⛏️
