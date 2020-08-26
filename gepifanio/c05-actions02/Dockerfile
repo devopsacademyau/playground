@@ -1,2 +1,2 @@
 FROM httpd:2.4.41
-RUN echo "This is my GH actions test exercise" > /usr/local/apache2/htdocs/index.html
+RUN echo "This is my GH test actions exercise" > /usr/local/apache2/htdocs/index.html
