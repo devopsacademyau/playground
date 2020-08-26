@@ -14,3 +14,4 @@ jobs:
       with:
         message: WELL DONE ${{ SECRETS.VANI_NAME }}! This is a nice PRN
         repo-token: "${{ secrets.VANI_TOKEN }}"
+        allow-repeats: false
