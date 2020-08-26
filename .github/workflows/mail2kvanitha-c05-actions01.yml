@@ -2,16 +2,17 @@ name: mail2kvanitha-c05-actions01
 
 on:
   pull_request:
-    paths:
-      - "mail2kvanitha/**"
 
 jobs:
-  GH-Comment:
+  test:
     runs-on: ubuntu-latest
     steps:
-      # https://github.com/marketplace/actions/add-pr-comment
-    - uses: mshick/add-pr-comment@v1
-      with:
-        message: WELL DONE ${{ SECRETS.VANI_NAME }}! This is a nice PRN
-        repo-token: "${{ secrets.VANI_TOKEN }}"
-        allow-repeats: false
+      - uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            **Hello**
+            🌏
+            !
+          repo-token: ${{ secrets.VANI_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
