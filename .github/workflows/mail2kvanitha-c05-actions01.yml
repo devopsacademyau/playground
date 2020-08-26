@@ -10,9 +10,6 @@ jobs:
       - uses: mshick/add-pr-comment@v1
         with:
           message: |
-            **Hello**
-            🌏
-            !
+            Well done ${{ secrets.VANI_NAME }}! This is a nice PRN
           repo-token: ${{ secrets.VANI_TOKEN }}
-          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
-          allow-repeats: false # This is the default
+          allow-repeats: false
