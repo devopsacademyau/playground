@@ -3,17 +3,14 @@ name: mail2kvanitha-c05-actions01
 on:
   pull_request:
     paths:
-    - "mail2kvanitha/**"
+      - "mail2kvanitha/**"
 
 jobs:
-  Comment:
+  GH-Comment:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.VANI_TOKEN }}
+      # https://github.com/marketplace/actions/add-pr-comment
+    - uses: mshick/add-pr-comment@v1
       with:
-        message: |
-          WELL DONE ${{ SECRETS.VANI_NAME }}! This is a nice PRN
-        allow-repeats: false
+        message: WELL DONE ${{ SECRETS.VANI_NAME }}! This is a nice PRN
+        repo-token: "${{ secrets.VANI_TOKEN }}"
