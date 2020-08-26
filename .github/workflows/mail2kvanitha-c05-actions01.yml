@@ -3,7 +3,7 @@ name: mail2kvanitha-c05-actions01
 on:
   pull_request:
     paths:
-      - "mail2kvanitha/**"
+    - "mail2kvanitha/**"
 
 jobs:
   Comment:
