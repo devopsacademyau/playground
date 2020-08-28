@@ -18,14 +18,16 @@ jobs:
       - name: Docker Image build and push
         run: |
           cd mail2kvanitha/c05-actions02
-          DOCKER_PASS=${{ secrets.VANI_DOCKER_PASS }} make login
+          echo "##[set-output name=get_sha;]$(git rev-parse --short HEAD)"
           make build
           DOCKER_PASS=${{ secrets.VANI_DOCKER_PASS }} make push
+        id: getsha
+        
       - name: C05-actions02 PR Comment
         # https://github.com/marketplace/actions/add-pr-comment
         uses: mshick/add-pr-comment@v1
         with:
           message: |
-            Well done ${{ secrets.VANI_NAME }}! This is a nice PRN
+            Well done ${{ secrets.VANI_NAME }}! Image pushed with tag ${{ steps.getsha.outputs.get_sha }}
           repo-token: ${{ secrets.VANI_TOKEN }}
           allow-repeats: false     
