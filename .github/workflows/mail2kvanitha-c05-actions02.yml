@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: mail2kvanitha-c05-actions02
+
+on:
+  pull_request:
+    branches: [ master ]
+    paths:
+      - mail2kvanitha/c05-actions02/**
+
+jobs:
+  c05-actions02:
+    runs-on: ubuntu-latest
+    name: Docker image push to DockerHub
+    steps:
+      - name: GH Checkout
+        uses: actions/checkout@v2
+        
+      - name: Docker Image build and push
+        run: |
+          cd mail2kvanitha/c05-actions02
+          make login
+          make build
+          make push
+        env:
+          VANI_DOCKER_LOGIN: $${{ secrets.VANI_DOCKER_LOGIN }}
+          VANI_DOCKER_PASS: $${{ secrets.VANI_DOCKER_LOGIN }}
+          
+      - name: PR Comment
+        uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            Well done ${{ secrets.VANI_NAME }}! This is a nice PRN
+          repo-token: ${{ secrets.VANI_TOKEN }}
+          allow-repeats: false     
