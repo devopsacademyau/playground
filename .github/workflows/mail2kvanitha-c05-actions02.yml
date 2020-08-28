@@ -18,15 +18,10 @@ jobs:
       - name: Docker Image build and push
         run: |
           cd mail2kvanitha/c05-actions02
-          echo " $${{ secrets.VANI_DOCKER_LOGIN }} "
-          make login
+          DOCKER_PASS=${{ secrets.VANI_DOCKER_PASS }} make login
           make build
-          make push
-        env:
-          VANI_DOCKER_LOGIN: $${{ secrets.VANI_DOCKER_LOGIN }}
-          VANI_DOCKER_PASS: $${{ secrets.VANI_DOCKER_LOGIN }}
-          
-      - name: PR Comment
+          DOCKER_PASS=${{ secrets.VANI_DOCKER_PASS }} make push
+      - name: C05-actions02 PR Comment
         # https://github.com/marketplace/actions/add-pr-comment
         uses: mshick/add-pr-comment@v1
         with:
