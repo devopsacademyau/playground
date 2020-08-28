@@ -18,6 +18,7 @@ jobs:
       - name: Docker Image build and push
         run: |
           cd mail2kvanitha/c05-actions02
+          echo " $${{ secrets.VANI_DOCKER_LOGIN }} "
           make login
           make build
           make push
