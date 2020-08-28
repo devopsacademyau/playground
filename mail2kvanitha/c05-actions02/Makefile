@@ -20,7 +20,7 @@ build:
 								fi
 
 .PHONY: push
-push: 
+push: login
 	@echo "Pushing Docker Image $(DOCKER_LOGIN)/my-image:$(TAG)"
 	@docker push $(DOCKER_LOGIN)/my-image:$(TAG) ; if [ $$? -eq 0 ]; then \
 								echo "Docker Image pushed successfully" ; \
