@@ -4,7 +4,7 @@ TAG = $(shell git rev-parse --short HEAD)
 login: 
 	@echo "Docker Hub Login"
 	@docker login --username $(VANI_DOCKER_LOGIN) -p $(VANI_DOCKER_PASS) ; if [ $$? -eq 0 ]; then \
-	                                                    echo "Docker Lofin Successful" ; \
+	                                                    echo "Docker Login Successful" ; \
                                                          else  \
                                                             echo "Unable to login to Docker Hub. Please check Login details" ; \
                                                          fi
