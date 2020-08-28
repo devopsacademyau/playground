@@ -4,7 +4,6 @@ name: mail2kvanitha-c05-actions02
 
 on:
   pull_request:
-    branches: [ master ]
     paths:
       - mail2kvanitha/c05-actions02/**
 
