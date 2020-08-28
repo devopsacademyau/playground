@@ -5,7 +5,7 @@ name: mail2kvanitha-c05-actions02
 on:
   pull_request:
     paths:
-      - mail2kvanitha/c05-actions02/**
+      - "mail2kvanitha/c05-actions02/**"
 
 jobs:
   c05-actions02:
@@ -26,6 +26,7 @@ jobs:
           VANI_DOCKER_PASS: $${{ secrets.VANI_DOCKER_LOGIN }}
           
       - name: PR Comment
+        # https://github.com/marketplace/actions/add-pr-comment
         uses: mshick/add-pr-comment@v1
         with:
           message: |
