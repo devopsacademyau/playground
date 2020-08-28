@@ -19,7 +19,7 @@ build:
 								fi
 
 .PHONY: push
-push: login build
+push: 
 	@echo "Pushing Docker Image $(VANI_DOCKER_LOGIN)/my-image:$(TAG)"
 	@docker push $(VANI_DOCKER_LOGIN)/my-image:$(TAG) ; if [ $$? -eq 0 ]; then \
 								echo "Docker Image pushed successfully" ; \
