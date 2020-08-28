@@ -1,4 +1,5 @@
 TAG = $(shell git rev-parse --short HEAD) 
+VANI_DOCKER_LOGIN=mail2kvanitha
 
 .PHONY: login
 login: 
