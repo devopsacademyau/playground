@@ -20,4 +20,4 @@ jobs:
       with:
         message: "Well done ${{ env.MY_NAME }}! This is a nice PR"
         repo-token-user-login: 'github-actions[bot]'
-        allow-repeats: true
+        allow-repeats: false

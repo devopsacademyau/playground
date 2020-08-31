@@ -3,7 +3,7 @@
 ## Commands
 
 ```yml
-# This workflow will deploy a new task definition to Amazon ECS based on the image pushed to ECR, when a merge is created
+# This workflow send a message to PR to change a file under my directory
 
 name: GPAVELAR/C05-ACTIONS01
 on:
@@ -16,14 +16,17 @@ jobs:
   comment:
     name: Deploy
     runs-on: ubuntu-latest
-    
+    env:
+      MY_NAME: ${{ secrets.GPAVELAR_USERNAME }}
+
     steps:
     - name: Comment on PR
       uses: mshick/add-pr-comment@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GPAVELAR_PAT }}
       with:
-        message: "Well done ${{ secrets.GPAVELAR_USERNAME }} ! This is a nice PR"
-        repo-token: ${{ secrets.GPAVELAR_PAT }}
+        message: "Well done ${{ env.MY_NAME }} ! This is a nice PR"
         repo-token-user-login: 'github-actions[bot]'
-        allow-repeats: true
+        allow-repeats: false
 
 ```
