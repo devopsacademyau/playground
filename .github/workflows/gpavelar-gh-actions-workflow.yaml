@@ -13,11 +13,8 @@ jobs:
     steps:
     - name: Comment on PR
       uses: mshick/add-pr-comment@v1
-      env:
-        MY_NAME: ${{ secrets.GPAVELAR_USERNAME }}
-        GITHUB_TOKEN: ${{ secrets.GPAVELAR_PAT }}
       with:
-        message: "Well done ${{ MY_NAME }} ! This is a nice PR"
-        repo-token: ${{ GITHUB_TOKEN }}
+        message: "Well done ${{ secrets.GPAVELAR_USERNAME }} ! This is a nice PR"
+        repo-token: ${{ secrets.GPAVELAR_PAT }}
         repo-token-user-login: 'github-actions[bot]'
         allow-repeats: true
