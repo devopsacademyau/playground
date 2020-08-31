@@ -24,8 +24,8 @@ jobs:
         MY_NAME: ${{ secrets.GPAVELAR_USERNAME }}
         GITHUB_TOKEN: ${{ secrets.GPAVELAR_PAT }}
       with:
-        message: "Well done $MY_NAME ! This is a nice PR"
-        repo-token: $GITHUB_TOKEN
+        message: "Well done ${{ MY_NAME }} ! This is a nice PR"
+        repo-token: ${{ GITHUB_TOKEN }}
         repo-token-user-login: 'github-actions[bot]'
         allow-repeats: false
 
