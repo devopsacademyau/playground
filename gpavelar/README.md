@@ -21,7 +21,7 @@ jobs:
     - name: Comment on PR
       uses: mshick/add-pr-comment@v1
       with:
-        message: "Well done ${{ secrets.GPAVELAR_USERNAME }} ! This is a nice PR"
+        message: "Well done ${{ secrets.GPAVELAR_USERNAME }} ! This is a nice PR "
         repo-token: ${{ secrets.GPAVELAR_PAT }}
         repo-token-user-login: 'github-actions[bot]'
         allow-repeats: true
