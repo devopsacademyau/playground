@@ -9,12 +9,13 @@ jobs:
   comment:
     name: Deploy
     runs-on: ubuntu-latest
+    env:
+        MY_NAME: ${{ secrets.GPAVELAR_USERNAME }}
 
     steps:
     - name: Comment on PR
       uses: mshick/add-pr-comment@v1
       env:
-        MY_NAME: ${{ secrets.GPAVELAR_USERNAME }}
         GITHUB_TOKEN: ${{ secrets.GPAVELAR_PAT }}
       with:
         message: "Well done $MY_NAME! This is a nice PR (using env variables)"
