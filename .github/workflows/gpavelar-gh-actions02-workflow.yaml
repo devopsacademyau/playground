@@ -32,6 +32,9 @@ jobs:
 
     - name: Comment Image and Short SHA
       uses: mshick/add-pr-comment@v1
+      env: 
+        IMAGE: "action02"
+        SHORT_SHA: "v1"
       with:
         message: "${{ env.IMAGE }}:${{ env.SHORT_SHA }}"
         repo-token: ${{ secrets.GPAVELAR_PAT }}
