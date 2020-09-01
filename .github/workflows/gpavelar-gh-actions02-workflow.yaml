@@ -21,7 +21,8 @@ jobs:
     - name: Set tag var
       id: vars
       run: |
-        echo ::set-output name=tag::$(echo ${GITHUB_REF} | cut -d'/' -f3)-${GITHUB_SHA}
+        echo ::set-output name=tag::$(git rev-parse --short HEAD)
+        echo ::set-output name=image_tag::c05-actions02
       
     - name: Docker build and tag
       run: |
@@ -41,7 +42,7 @@ jobs:
         IMAGE: "action02"
         SHORT_SHA: "v1"
       with:
-        message: "${{ env.IMAGE }}:${{ steps.vars.outputs.tag }}"
+        message: "${{ steps.vars.outputs.image_tag }}:${{ steps.vars.outputs.tag }}"
         # message: "${{ env.IMAGE }}:${{ env.SHORT_SHA }}"
         repo-token: ${{ secrets.GPAVELAR_PAT }}
         allow-repeats: true 
