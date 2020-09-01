@@ -22,13 +22,11 @@ jobs:
       id: vars
       run: |
         echo ::set-output name=tag::$(git rev-parse --short HEAD)
-        echo ::set-output name=image_tag::c05-actions02
+        echo ::set-output name=image::actions02
       
     - name: Docker build and tag
       run: |
         make docker-build
-        echo ${SHORT_SHA}
-        echo ${IMAGE}
       shell: bash
 
     - name: Docker Push Image
@@ -42,8 +40,7 @@ jobs:
         IMAGE: "action02"
         SHORT_SHA: "v1"
       with:
-        message: "${{ steps.vars.outputs.image_tag }}:${{ steps.vars.outputs.tag }}"
-        # message: "${{ env.IMAGE }}:${{ env.SHORT_SHA }}"
+        message: "${{ steps.vars.outputs.image }}:${{ steps.vars.outputs.tag }}"
         repo-token: ${{ secrets.GPAVELAR_PAT }}
         allow-repeats: true 
 
