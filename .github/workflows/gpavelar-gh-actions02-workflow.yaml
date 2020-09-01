@@ -11,9 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      
     - name: Docker build and tag
       working-directory: 'gpavelar/c05-actions02'
       run: make docker-build
+      shell: bash
 
     - name: Docker Push Image
       # working-directory: './gpavelar/c05-actions02'
