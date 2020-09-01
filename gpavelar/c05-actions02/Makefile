@@ -1,8 +1,8 @@
 COMPOSE_PATH = docker-compose.yml
 COMPOSE_ENV = docker-compose -f ${COMPOSE_PATH}
 COMPOSE_RUN = ${COMPOSE_ENV} run --rm
-SHORT_SHA=${shell git rev-parse --short HEAD}
-IMAGE ?= actions02
+export SHORT_SHA=$$(git rev-parse --short HEAD)
+export IMAGE=actions02
 DH_USERNAME ?= gpavelar
 
 ##+MAKEFILE HELPER
@@ -25,7 +25,7 @@ build:			##+ Builds the compose containers.
 ##+
 docker-build:
 	@echo "Building Docker Image ${IMAGE}:${SHORT_SHA}"
-	@docker build -t ${IMAGE}:${SHORT_SHA} .
+	@docker build -t ${IMAGE}:$(SHORT_SHA) .
 .PHONY: docker-build
 
 ##+

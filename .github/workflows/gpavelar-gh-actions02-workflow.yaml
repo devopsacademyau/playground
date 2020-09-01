@@ -19,12 +19,10 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Docker build and tag
-      # working-directory: 'gpavelar/c05-actions02'
       run: make docker-build
       shell: bash
 
     - name: Docker Push Image
-      # working-directory: './gpavelar/c05-actions02'
       env:
         GPAVELAR_DH_TOKEN: ${{ secrets.GPAVELAR_DH_TOKEN }}
       run: make docker-push
@@ -36,11 +34,11 @@ jobs:
       with:
         message: "${{ env.IMAGE }}:${{ env.SHORT_SHA }}"
 
-
-      # uses: mshick/add-pr-comment@v1
-      # env:
-      #   GITHUB_TOKEN: ${{ secrets.GPAVELAR_PAT }}
-      # with:
-      #   message: "Well done ${{ secrets.GPAVELAR_USERNAME }} ! This is a nice PR"
-      #   repo-token-user-login: 'github-actions[bot]'
-      #   allow-repeats: true 
+    - name: Comment
+      uses: mshick/add-pr-comment@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GPAVELAR_PAT }}
+      with:
+        message: "Well done ${{ secrets.GPAVELAR_USERNAME }} ! This is a nice PR"
+        repo-token-user-login: 'github-actions[bot]'
+        allow-repeats: false 
