@@ -33,6 +33,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GPAVELAR_PAT }}
       with:
         message: "${{ env.IMAGE }}:${{ env.SHORT_SHA }}"
+        allow-repeats: true 
 
     - name: Comment
       uses: mshick/add-pr-comment@v1
