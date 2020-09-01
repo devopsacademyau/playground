@@ -12,7 +12,7 @@ jobs:
     
     steps:
     - name: Docker build and tag
-      # working-directory: './gpavelar/c05-actions02'
+      working-directory: 'gpavelar/c05-actions02'
       run: make docker-build
 
     - name: Docker Push Image
