@@ -1,9 +1,9 @@
-name: GPAVELAR/C05-ACTIONS01
+name: GPAVELAR/C05-ACTIONS02
 on:
   pull_request:
     branches:
     - master
-    paths: 'gpavelar/c05-actions02/***'
+    paths: 'gpavelar/c05-actions02/**'
 
 jobs:
   comment:
