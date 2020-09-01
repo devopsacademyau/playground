@@ -8,15 +8,15 @@ on:
 jobs:
   comment:
     name: Deploy
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     
     steps:
     - name: Docker build and tag
-      working-directory: 'gpavelar/c05-actions02'
+      working-directory: './gpavelar/c05-actions02'
       run: make docker-build
 
     - name: Docker Push Image
-      working-directory: 'gpavelar/c05-actions02'
+      working-directory: './gpavelar/c05-actions02'
       env:
         GPAVELAR_DH_TOKEN: ${{ secrets.GPAVELAR_DH_TOKEN }}
       run: make docker-push
