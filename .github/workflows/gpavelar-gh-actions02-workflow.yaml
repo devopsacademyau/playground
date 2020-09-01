@@ -1,0 +1,39 @@
+name: GPAVELAR/C05-ACTIONS02
+on:
+  pull_request:
+    branches:
+    - master
+    paths: 'gpavelar/c05-actions02/**'
+
+jobs:
+  comment:
+    name: Deploy
+    runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: 'gpavelar/c05-actions02'
+
+    steps:
+    - name: Docker build and tag
+      run: make docker-build
+
+    - name: Docker Push Image
+      env:
+        GPAVELAR_DH_TOKEN: ${{ secrets.GPAVELAR_DH_TOKEN }}
+      run: make docker-push
+
+    - name: Comment Image and Short SHA
+      uses: mshick/add-pr-comment@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GPAVELAR_PAT }}
+      with:
+        message: "${{ env.IMAGE }}:${{ env.SHORT_SHA }}"
+
+
+      # uses: mshick/add-pr-comment@v1
+      # env:
+      #   GITHUB_TOKEN: ${{ secrets.GPAVELAR_PAT }}
+      # with:
+      #   message: "Well done ${{ secrets.GPAVELAR_USERNAME }} ! This is a nice PR"
+      #   repo-token-user-login: 'github-actions[bot]'
+      #   allow-repeats: true 
