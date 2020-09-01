@@ -27,6 +27,11 @@ jobs:
         GPAVELAR_DH_TOKEN: ${{ secrets.GPAVELAR_DH_TOKEN }}
       run: make docker-push
 
+    - name: Show SHORT SHA
+      run: |
+        echo ${SHORT_SHA}
+        echo ${IMAGE}
+
     - name: Comment Image and Short SHA
       uses: mshick/add-pr-comment@v1
       env:
