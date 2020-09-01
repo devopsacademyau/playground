@@ -5,21 +5,18 @@ on:
     - master
     paths: 'gpavelar/c05-actions02/**'
 
-defaults:
-  run:
-    working-directory: 'gpavelar/c05-actions02'
-
 jobs:
   comment:
     name: Deploy
     runs-on: ubuntu-18.04
     
-
     steps:
     - name: Docker build and tag
+      working-directory: 'gpavelar/c05-actions02'
       run: make docker-build
 
     - name: Docker Push Image
+      working-directory: 'gpavelar/c05-actions02'
       env:
         GPAVELAR_DH_TOKEN: ${{ secrets.GPAVELAR_DH_TOKEN }}
       run: make docker-push
