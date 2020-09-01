@@ -5,13 +5,15 @@ on:
     - master
     paths: 'gpavelar/c05-actions02/**'
 
+defaults:
+  run:
+    working-directory: 'gpavelar/c05-actions02'
+
 jobs:
   comment:
     name: Deploy
     runs-on: ubuntu-18.04
-    defaults:
-      run:
-        working-directory: 'gpavelar/c05-actions02'
+    
 
     steps:
     - name: Docker build and tag
