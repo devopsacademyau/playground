@@ -5,6 +5,10 @@ on:
     - master
     paths: 'gpavelar/c05-actions02/**'
 
+defaults:
+  run:
+    working-directory: 'gpavelar/c05-actions02'
+
 jobs:
   comment:
     name: Deploy
@@ -15,7 +19,7 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Docker build and tag
-      working-directory: 'gpavelar/c05-actions02'
+      # working-directory: 'gpavelar/c05-actions02'
       run: make docker-build
       shell: bash
 
