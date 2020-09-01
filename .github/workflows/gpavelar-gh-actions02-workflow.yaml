@@ -17,6 +17,11 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    
+    - name: Set tag var
+      id: vars
+      run: |
+        echo ::set-output name=tag::$(echo ${GITHUB_REF} | cut -d'/' -f3)-${GITHUB_SHA}
       
     - name: Docker build and tag
       run: |
@@ -36,7 +41,8 @@ jobs:
         IMAGE: "action02"
         SHORT_SHA: "v1"
       with:
-        message: "${{ env.IMAGE }}:${{ env.SHORT_SHA }}"
+        message: "${{ env.IMAGE }}:${{ steps.vars.outputs.tag }}"
+        # message: "${{ env.IMAGE }}:${{ env.SHORT_SHA }}"
         repo-token: ${{ secrets.GPAVELAR_PAT }}
         allow-repeats: true 
 
