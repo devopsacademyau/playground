@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2.1.0
       - name: "Docker Build and Push"
         working-directory: "jayanath/c05-actions02"
-        run: make build push
+        run: make build
         env:
           DOCKER_HUB_PASSWORD: "${{ secrets.JAY_DHUB_PW }}"
       - name: Create Pull request comment
