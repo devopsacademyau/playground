@@ -13,7 +13,7 @@ jobs:
         working-directory: "jayanath/c05-actions02"
         run: make build push
         env:
-          DOCKER_HUB_PASSWORD: ${{ secrets.JAY_DHUB_PW }}
+          DOCKER_HUB_PASSWORD: blablablah
       - name: Retrieve SHA
         id: sha
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
