@@ -13,12 +13,9 @@ jobs:
         working-directory: "jayanath/c05-actions02"
         run: make build push
         env:
-          DOCKER_HUB_PASSWORD: blablablah
-      - name: Retrieve SHA
-        id: sha
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+          DOCKER_HUB_PASSWORD: "${{ secrets.JAY_DHUB_PW }}"
       - name: Create Pull request comment
         uses: mshick/add-pr-comment@v1
         with:
           repo-token: "${{ secrets.JAY_GH_TOKEN }}"
-          message: Well done! Image Pushed 3m-rocks:${{ steps.vars.sha.sha_short}}!!
+          message: Well done! Image Pushed 3m-rocks:${{ github.sha }}!!
