@@ -10,11 +10,10 @@ jobs:
       - name: "Setup - Checkout"
         uses: actions/checkout@v2.1.0
       - name: "Docker Build and Push"
-        run: |
-          cd jayanath/c05-actions02
-          make build
-          DOCKER_HUB_PASSWORD=${{ secrets.JAY_DHUB_PW }}
-          make push
+        working-directory: "jayanath/c05-actions02"
+        run: make build push
+        env:
+          DOCKER_HUB_PASSWORD: ${{ secrets.JAY_DHUB_PW }}
       - name: Retrieve SHA
         id: sha
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
