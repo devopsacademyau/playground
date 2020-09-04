@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  3m_run:
+    build:
+      context: .
+      dockerfile: Base.Dockerfile
+    env_file: .env
+    volumes:
+      - .:/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /cache
+    working_dir: /workspace

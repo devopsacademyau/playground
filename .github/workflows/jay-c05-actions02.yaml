@@ -1,0 +1,25 @@
+name: Jay Github Actions with 3 Musketeers
+on:
+  pull_request:
+    paths:
+      - "jayanath/c05-actions02/**"
+jobs:
+  dockerbuildandpush:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Setup - Checkout"
+        uses: actions/checkout@v2.1.0
+      - name: "Docker Build and Push"
+        run: |
+          cd jayanath/c05-actions02
+          make build
+          DOCKER_HUB_PASSWORD=${{ secrets.JAY_DHUB_PW }}
+          make push
+      - name: Retrieve SHA
+        id: sha
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      - name: Create Pull request comment
+        uses: mshick/add-pr-comment@v1
+        with:
+          repo-token: "${{ secrets.JAY_GH_TOKEN }}"
+          message: Well done! Image Pushed 3m-rocks:${{ steps.vars.sha.sha_short}}!!
