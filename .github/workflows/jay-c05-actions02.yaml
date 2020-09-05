@@ -21,4 +21,4 @@ jobs:
         uses: mshick/add-pr-comment@v1
         with:
           repo-token: "${{ secrets.JAY_GH_TOKEN }}"
-          message: Well done! Image Pushed 3m-rocks:${{ steps.vars.outputs.sha_short}}!
+          message: Well done! Image Pushed 3m-rocks:${{ steps.vars.outputs.sha_short}}!!
