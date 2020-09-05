@@ -2,6 +2,8 @@ name: mail2kvanitha-c05-actions01
 
 on:
   pull_request:
+    paths:
+      - "mail2kvanitha/c05-actions01/**"
 
 jobs:
   c05-actions01:
