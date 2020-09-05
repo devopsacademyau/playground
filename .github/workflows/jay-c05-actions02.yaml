@@ -9,13 +9,19 @@ jobs:
     steps:
       - name: "Setup - Checkout"
         uses: actions/checkout@v2.1.0
+
       - name: "Docker Build and Push"
         working-directory: "jayanath/c05-actions02"
         run: make build
         env:
           DOCKER_HUB_PASSWORD: "${{ secrets.JAY_DHUB_PW }}"
+
+      - name: Set SHA short value
+        id: vars
+        run: echo "::set-output name=sha_short::$(echo ${{ github.sha }} | cut -c1-7)"
+
       - name: Create Pull request comment
         uses: mshick/add-pr-comment@v1
         with:
           repo-token: "${{ secrets.JAY_GH_TOKEN }}"
-          message: Well done! Image Pushed 3m-rocks:${{ github.sha }}!!
+          message: Well done! Image Pushed 3m-rocks:${{ steps.vars.outputs.sha_short}}!!
