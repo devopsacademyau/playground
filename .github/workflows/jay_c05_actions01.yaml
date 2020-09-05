@@ -1,0 +1,15 @@
+on:
+  pull_request:
+    paths:
+      - 'jayanath/**'
+
+jobs:
+  jay_c05_action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            Well done "${{ secrets.JAY_NAME }}" ! This is a nice PR! 🏖️
+          repo-token: ${{ secrets.JAY_GH_TOKEN }}
+          allow-repeats: false
