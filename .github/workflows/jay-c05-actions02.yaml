@@ -18,4 +18,4 @@ jobs:
         uses: mshick/add-pr-comment@v1
         with:
           repo-token: "${{ secrets.JAY_GH_TOKEN }}"
-          message: Well done! Image Pushed 3m-rocks:${{ github.sha }}!!
+          message: Well done! Image Pushed 3m-rocks:`echo ${{ github.sha }} | cut -c1-7`!!
