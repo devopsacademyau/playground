@@ -50,32 +50,50 @@ on:
     - master
     paths: 'gpavelar/c05-actions02/**'
 
+defaults:
+  run:
+    working-directory: 'gpavelar/c05-actions02'
+
 jobs:
   comment:
     name: Deploy
-    runs-on: ubuntu-18.04
-
+    runs-on: ubuntu-latest
+    
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Set tag var
+      id: vars
+      run: |
+        echo ::set-output name=tag::$(git rev-parse --short HEAD)
+        echo ::set-output name=image::actions02
+      
     - name: Docker build and tag
-      working-directory: 'gpavelar/c05-actions02/'
-      run: make docker-build
+      run: |
+        make docker-build
+      shell: bash
 
     - name: Docker Push Image
-      working-directory: 'gpavelar/c05-actions02/'
       env:
         GPAVELAR_DH_TOKEN: ${{ secrets.GPAVELAR_DH_TOKEN }}
       run: make docker-push
 
+    - name: Comment Image and Short SHA
+      uses: mshick/add-pr-comment@v1
+      env: 
+        IMAGE: "action02"
+        SHORT_SHA: "v1"
+      with:
+        message: "${{ steps.vars.outputs.image }}:${{ steps.vars.outputs.tag }}"
+        repo-token: ${{ secrets.GPAVELAR_PAT }}
+        allow-repeats: true 
+
+    - name: Comment
       uses: mshick/add-pr-comment@v1
       with:
-        message: "${{ env.IMAGE }}:${{ env.SHORT_SHA }}"
-
-
-      # uses: mshick/add-pr-comment@v1
-      # env:
-      #   GITHUB_TOKEN: ${{ secrets.GPAVELAR_PAT }}
-      # with:
-      #   message: "Well done ${{ secrets.GPAVELAR_USERNAME }} ! This is a nice PR"
-      #   repo-token-user-login: 'github-actions[bot]'
-      #   allow-repeats: true 
+        message: "Well done ${{ secrets.GPAVELAR_USERNAME }} ! This is a nice PR"
+        repo-token-user-login: 'github-actions[bot]'
+        repo-token: ${{ secrets.GPAVELAR_PAT }}
+        allow-repeats: false 
 ```
