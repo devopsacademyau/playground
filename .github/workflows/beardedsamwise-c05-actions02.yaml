@@ -7,7 +7,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      -name: Checkout repo
+      - uses: actions/checkout@v1
         with:
           fetch-depth: 1
       - name: Build and push image to Docker Hub
