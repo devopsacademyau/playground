@@ -15,7 +15,7 @@ push:
 .PHONY: login
 login:
 	echo "LOGGING IN TO DOCKER HUB..."
-	docker login -u beardedsamwise -p $(BEARDED_DOCKER)
+	sudo docker login -u beardedsamwise -p $(BEARDED_DOCKER)
 
 all: 
 	login build push
