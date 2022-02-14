@@ -15,5 +15,3 @@ jobs:
         env:
           BEARDED_DOCKER: ${{ secrets.BEARDED_DOCKER }}
         run: make all
-
-
