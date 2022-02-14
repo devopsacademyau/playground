@@ -1,0 +1,19 @@
+on: 
+  pull_request:
+    paths:
+    - 'beardedsamwise/c05-actions-02/*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+          
+      - name: Build and push image to Docker Hub
+        run: make all
+        env:
+          BEARDED_DOCKER: ${{ secrets.BEARDED_DOCKER }}
+      
