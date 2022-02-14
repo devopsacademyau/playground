@@ -15,7 +15,6 @@ push:
 .PHONY: login
 login:
 	echo "LOGGING IN TO DOCKER HUB..."
-	sudo su
 	echo $(BEARDED_DOCKER) | docker login --username beardedsamwise --password-stdin
 
 all: 
