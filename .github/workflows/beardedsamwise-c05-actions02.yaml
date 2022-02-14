@@ -1,5 +1,5 @@
 on: 
-  push:
+  pull_request:
     paths:
     - 'beardedsamwise/c05-actions-02/*'
 
@@ -9,7 +9,7 @@ jobs:
     name: Push image to Docker Hub
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
         with:
           fetch-depth: 1
           
