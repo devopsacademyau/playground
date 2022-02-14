@@ -13,6 +13,7 @@ jobs:
         ref: ${{ GITHUB_SHA }}
         with:
           fetch-depth: 1
+          ref: ${{ GITHUB_SHA }}
           
       - name: Log in to Docker Hub
         working-directory: beardedsamwise/c05-actions-02/
