@@ -1,4 +1,4 @@
-SHA = $(shell git rev-parse --short HEAD)
+export GITHUB_SHA
 IMAGEID = "beardedsamwise/c05-actions02"
 export BEARDED_DOCKER
 
