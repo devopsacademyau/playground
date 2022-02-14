@@ -19,3 +19,13 @@ jobs:
         env:
           BEARDED_DOCKER: ${{ secrets.BEARDED_DOCKER }}
       
+      - name: Build Docker image
+        working-directory: beardedsamwise/c05-actions-02/
+        run: make build
+      
+      - name: Log in to Docker Hub
+        working-directory: beardedsamwise/c05-actions-02/
+        run: make push
+
+
+      
