@@ -13,9 +13,9 @@ jobs:
         with:
           fetch-depth: 1
           
-      - name: Build and push image to Docker Hub
+      - name: Log in to Docker Hub
         working-directory: beardedsamwise/c05-actions-02/
-        run: make all
+        run: make login
         env:
           BEARDED_DOCKER: ${{ secrets.BEARDED_DOCKER }}
       
