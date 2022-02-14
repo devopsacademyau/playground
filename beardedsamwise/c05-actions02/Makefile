@@ -16,6 +16,8 @@ login:
 	@echo "LOGGING IN TO DOCKER HUB..."
 	@docker login -u beardedsamwise -p $(BEARDED_DOCKER)
 
+.PHONY: all
 all: login build push
 
+.PHONE: test
 test: build push
