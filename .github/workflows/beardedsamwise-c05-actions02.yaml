@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+        ref: ${{ GITHUB_SHA }}
         with:
           fetch-depth: 1
           
