@@ -23,7 +23,7 @@ jobs:
         working-directory: beardedsamwise/c05-actions-02/
         run: make build
       
-      - name: Log in to Docker Hub
+      - name: Push image to Docker Hub
         working-directory: beardedsamwise/c05-actions-02/
         run: make push
 
