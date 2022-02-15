@@ -20,7 +20,7 @@ jobs:
           BEARDED_DOCKER: ${{ secrets.BEARDED_DOCKER }}
       - name: Show Docker logs
         working-directory: beardedsamwise/c05-actions-02/
-        run: git log --pretty=format:%h - %an, %ar
+        run: git log --pretty=format:"%h - %an, %ar"
       - name: Build Docker image
         working-directory: beardedsamwise/c05-actions-02/
         run: make build
