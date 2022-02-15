@@ -5,6 +5,8 @@ on:
 
 jobs:
   build:
+    outputs:
+      output1: ${{ steps.step5.outputs.test }}
     runs-on: ubuntu-latest
     name: Push image to Docker Hub
     steps:
@@ -19,11 +21,7 @@ jobs:
         run: make login
         env:
           BEARDED_DOCKER: ${{ secrets.BEARDED_DOCKER }}
-      - name: Show Docker logs
-        working-directory: beardedsamwise/c05-actions-02/
-        run: echo $GITHUB_SHA
-        env:
-          GIT_SHA: ${{ github.GITHUB_SHA }}
+
       - name: Build Docker image
         working-directory: beardedsamwise/c05-actions-02/
         run: make build
@@ -31,6 +29,13 @@ jobs:
       - name: Push image to Docker Hub
         working-directory: beardedsamwise/c05-actions-02/
         run: make push
+
+      - name: Create Image ID Variable
+        working-directory: beardedsamwise/c05-actions-02/
+        run: make output
+
+      - name: Test output
+        run: echo "${{ env.FULLIMAGEID }}"
 
 
       
