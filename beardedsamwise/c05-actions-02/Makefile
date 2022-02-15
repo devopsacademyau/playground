@@ -1,6 +1,7 @@
 SHA = $(shell git rev-parse --short HEAD)
 IMAGEID = "beardedsamwise/c05-actions02"
 export BEARDED_DOCKER
+export GITHUB_ENV
 
 .PHONY: build
 build:
@@ -16,6 +17,9 @@ push:
 login:
 	echo "LOGGING IN TO DOCKER HUB..."
 	@echo $(BEARDED_DOCKER) | docker login --username beardedsamwise --password-stdin
+.PHONY: output
+output:
+	echo "FULLIMAGEID=$(IMAGEID):$(SHA)" >> $(GITHUB_ENV)
 
 all: 
 	login build push
