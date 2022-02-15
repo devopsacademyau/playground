@@ -22,10 +22,14 @@ jobs:
       - name: Build Docker image
         working-directory: beardedsamwise/c05-actions-02/
         run: make build
+        env:
+          SHA: ${{ github.GITHUB_SHA }}
       
       - name: Push image to Docker Hub
         working-directory: beardedsamwise/c05-actions-02/
         run: make push
+        env:
+          SHA: ${{ github.GITHUB_SHA }}
 
 
       
