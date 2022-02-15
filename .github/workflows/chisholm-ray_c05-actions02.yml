@@ -3,10 +3,10 @@ name: 3M workflow with comment on PR
 on:
   pull_request:
     paths:
-    - 'chisholm-ray/actions02/**'
+      - 'chisholm-ray/actions02/**'
 
 jobs:
-  docker:
+  build:
     runs-on: ubuntu-latest
     steps:
 
@@ -18,11 +18,15 @@ jobs:
         echo "IMAGEFULLNAME=conorcr/actions02:${{ env.SHORT_SHA }}" >> $GITHUB_ENV
 
     - name: docker login
-      with:
-        CCR_DOCKERP: ${{ secrets.CCR_DOCKERP}}
+      run: |
+        make login
       env:
         CCR_DOCKERU: ${{ secrets.CCR_DOCKERU }}
-      run: make login
+      with:
+        CCR_DOCKERP: ${{ secrets.CCR_DOCKERP }}
+
+
+
 
     - name: build image
       run: make build
