@@ -1,4 +1,4 @@
-export GITHUB_SHA
+export SHA
 IMAGEID = "beardedsamwise/c05-actions02"
 export BEARDED_DOCKER
 
