@@ -1,7 +1,8 @@
+name: 3M workflow with comment on PR
 
 on:
   pull_request:
-  paths:
+    paths:
       - 'chisholm-ray/actions02/**'
 
 jobs:
