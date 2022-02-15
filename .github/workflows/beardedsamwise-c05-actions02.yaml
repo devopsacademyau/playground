@@ -12,14 +12,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 1
-          ref: ${{ github.GITHUB_SHA }}
           
       - name: Log in to Docker Hub
         working-directory: beardedsamwise/c05-actions-02/
         run: make login
         env:
           BEARDED_DOCKER: ${{ secrets.BEARDED_DOCKER }}
-      
+          SHA: ${{ github.GITHUB_SHA }}
       - name: Build Docker image
         working-directory: beardedsamwise/c05-actions-02/
         run: make build
