@@ -2,7 +2,7 @@
 on:
   pull_request:
   paths:
-      - 'chisholm-ray/**'
+      - 'chisholm-ray/actions02/**'
 
 jobs:
   docker:
