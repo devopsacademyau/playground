@@ -17,10 +17,11 @@ jobs:
     - uses: actions/checkout@v2  
       with:
         ref: ${{ github.event.pull_request.head.sha }}
-        
+
     - name: set variables
-      run: |
-        echo "SHORT_SHA=`${{ github.sha }} | head -c 7`" >> $GITHUB_ENV
+    - run: |
+        echo "SHORT_SHA=`${{ github.sha }} | tail -c 7`" >> $GITHUB_ENV
+    - run: |
         echo "IMAGEFULLNAME=conorcr/actions02:${{ env.SHORT_SHA }}" >> $GITHUB_ENV
 
     - name: docker login 
