@@ -8,6 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: chisholm-ray/actions02/
+
     steps:
     - uses: actions/checkout@v2  
 
