@@ -1,0 +1,43 @@
+on: 
+  pull_request:
+    paths:
+    - 'beardedsamwise/c05-actions-02/*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Push image to Docker Hub
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          ref: ${{ github.event.pull_request.head.sha }}
+          
+      - name: Log in to Docker Hub
+        working-directory: beardedsamwise/c05-actions-02/
+        run: make login
+        env:
+          BEARDED_DOCKER: ${{ secrets.BEARDED_DOCKER }}
+
+      - name: Build Docker image
+        working-directory: beardedsamwise/c05-actions-02/
+        run: make build
+      
+      - name: Push image to Docker Hub
+        working-directory: beardedsamwise/c05-actions-02/
+        run: make push
+
+      - name: Create image ID variable
+        working-directory: beardedsamwise/c05-actions-02/
+        run: make output
+
+      - name: Comment PR with latest image ID
+        uses: thollander/actions-comment-pull-request@v1
+        with:
+          message: 'The latest Docker image ID is: ${{ env.FULLIMAGEID }}'
+          GITHUB_TOKEN: ${{ secrets.BEARDED_KEY }}
+
+
+
+      
