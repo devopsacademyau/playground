@@ -13,4 +13,4 @@ push:
 
 login:
 		@echo "Logging into DockerHub with provided credentials"
-		@docker login -u ${CCR_DOCKERU} --password-stdin 
+		@docker login -u ${CCR_DOCKERU} -p ${CCR_DOCKERP}
