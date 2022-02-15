@@ -18,7 +18,7 @@ jobs:
 
     - name: set variables
       run: |
-        echo "SHORT_SHA="`${{ github.sha }} | tail -c 7`"" >> $GITHUB_ENV
+        echo "SHORT_SHA="${{ github.sha }} | head -c 7"" >> $GITHUB_ENV
         echo "IMAGEFULLNAME="conorcr/actions02:${{ env.SHORT_SHA }}"" >> $GITHUB_ENV
 
     - name: docker login 
