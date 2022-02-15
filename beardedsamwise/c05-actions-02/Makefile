@@ -16,13 +16,8 @@ push:
 login:
 	echo "LOGGING IN TO DOCKER HUB..."
 	@echo $(BEARDED_DOCKER) | docker login --username beardedsamwise --password-stdin
-	
+
 .PHONY: output
 output:
 	echo "FULLIMAGEID=$(IMAGEID):$(SHA)" >> $(GITHUB_ENV)
 
-all: 
-	login build push
-
-test: 
-	build push

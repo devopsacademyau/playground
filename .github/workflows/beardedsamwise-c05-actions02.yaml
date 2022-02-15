@@ -5,8 +5,6 @@ on:
 
 jobs:
   build:
-    outputs:
-      output1: ${{ steps.step5.outputs.test }}
     runs-on: ubuntu-latest
     name: Push image to Docker Hub
     steps:
