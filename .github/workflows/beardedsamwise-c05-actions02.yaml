@@ -22,7 +22,7 @@ jobs:
         working-directory: beardedsamwise/c05-actions-02/
         run: echo $GITHUB_SHA
         env:
-          GIT_SHA: ${{ GITHUB_SHA }}
+          GIT_SHA: ${{ github.GITHUB_SHA }}
       - name: Build Docker image
         working-directory: beardedsamwise/c05-actions-02/
         run: make build
