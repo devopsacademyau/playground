@@ -9,25 +9,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout repo
-      uses: actions/checkout@v2  
+    - uses: actions/checkout@v2  
 
     - name: set variables
       run: |
         echo "SHORT_SHA=`git rev-parse HEAD | head -c 7`" >> $GITHUB_ENV
         echo "IMAGEFULLNAME=conorcr/actions02:${{ env.SHORT_SHA }}" >> $GITHUB_ENV
 
-    - name: docker login
+    - name: docker login 
       with:
         CCR_DOCKERP: ${{ secrets.CCR_DOCKERP }}
       env:
         CCR_DOCKERU: ${{ secrets.CCR_DOCKERU }}
       run: |
         make login
-
-
-
-
 
     - name: build image
       run: make build
