@@ -2,7 +2,7 @@ name: 3M workflow with comment on PR
 
 on:
   pull_request:
-    paths:
+  paths:
       - 'chisholm-ray/actions02/**'
 
 jobs:
@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: checkout repo
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2  
 
     - name: set variables
       run: |
