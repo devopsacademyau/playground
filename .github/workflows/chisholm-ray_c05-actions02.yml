@@ -18,7 +18,7 @@ jobs:
 
     - name: set variables
       run: |
-        ${{ github.sha }} | head -c 7 > short_sha
+        echo ${{ github.sha }} | head -c 7 > short_sha
         echo "SHORT_SHA=$(cat short_sha)" >> $GITHUB_ENV
         echo "IMAGEFULLNAME=${{ secrets.CCR_DOCKERU }}/actions02:${{ env.SHORT_SHA }}" >> $GITHUB_ENV
 
