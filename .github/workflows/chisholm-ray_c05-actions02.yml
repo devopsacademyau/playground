@@ -34,26 +34,10 @@ jobs:
     - name: push image
       run: make push
 
-    - name: set outputs
-      id: outs
-      run: echo "::set-output name=tag::$(${IMAGEFULLNAME})"
-    outputs:
-      dockertag: ${{ steps.outs.outputs.tag }}
-
-  comment_pr:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-    - name: set variables 
-      run: |
-        echo ${{ github.sha }} | head -c 7 > TAG_SHA 
-        echo "IMAGEFULLNAME=${{ secrets.CCR_DOCKERU }}/actions02:$(cat TAG_SHA)" >> $GITHUB_ENV
     - name: Comment PR
       uses: thollander/actions-comment-pull-request@v1
 
       with:
-        message: 'Image name ${IMAGEFULLNAME} has been pushed to dockerhub'
+        message: 'Image name ${{ env.IMAGEFULLNAME}} has been pushed to dockerhub'
         GITHUB_TOKEN: ${{ secrets.CCR_GITHUB_TOKEN}}
       
