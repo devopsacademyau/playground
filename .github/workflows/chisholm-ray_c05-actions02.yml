@@ -19,7 +19,8 @@ jobs:
     - name: set variables
       run: |
         echo ${{ github.sha }} | head -c 7 > short_sha
-        echo "SHORT_SHA=$(cat short_sha)" >> $GITHUB_ENV
+        SHORT_SHA=`cat short_sha` 
+        echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_ENV
         echo "IMAGEFULLNAME=${{ secrets.CCR_DOCKERU }}/actions02:${{ env.SHORT_SHA }}" >> $GITHUB_ENV
 
     - name: docker login 
