@@ -16,7 +16,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2  
 
-    - id: vars
+    - name: set variables
+      id: vars
       run: |
         echo ${{ github.sha }} | head -c 7 > TAG_SHA 
         echo "IMAGEFULLNAME=${{ secrets.CCR_DOCKERU }}/actions02:$(cat TAG_SHA)" >> $GITHUB_ENV
