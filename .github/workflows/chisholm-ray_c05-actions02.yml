@@ -21,7 +21,7 @@ jobs:
         echo ${{ github.sha }} | head -c 7 > TAG_SHA 
         echo "IMAGEFULLNAME=${{ secrets.CCR_DOCKERU }}/actions02:$(cat TAG_SHA)" >> $GITHUB_ENV
 
-        echo "::set-output name=tag::${{ env.IMAGEFULLNAME }}"
+        echo "::set-output name=tag::${IMAGEFULLNAME}"
 
     - name: docker login 
       env:
