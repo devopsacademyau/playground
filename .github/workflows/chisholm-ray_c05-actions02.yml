@@ -17,12 +17,9 @@ jobs:
     - uses: actions/checkout@v2  
 
     - name: set variables
-      id: vars
       run: |
         echo ${{ github.sha }} | head -c 7 > TAG_SHA 
         echo "IMAGEFULLNAME=${{ secrets.CCR_DOCKERU }}/actions02:$(cat TAG_SHA)" >> $GITHUB_ENV
-
-        echo "::set-output name=tag::${IMAGEFULLNAME}"
 
     - name: docker login 
       env:
@@ -37,8 +34,11 @@ jobs:
     - name: push image
       run: make push
 
+    - name: set outputs
+      id: outs
+      run: echo "::set-output name=tag::$(${IMAGEFULLNAME})"
     outputs:
-      dockertag: ${{ steps.vars.outputs.tag }}
+      dockertag: ${{ steps.outs.outputs.tag }}
 
   comment_pr:
     runs-on: ubuntu-latest
