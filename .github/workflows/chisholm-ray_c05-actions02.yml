@@ -36,7 +36,7 @@ jobs:
     - name: push image
       run: make push
 
-    - outputs:
+    outputs:
       IMAGEFULLNAME: ${{ steps.identify.outputs.IMAGEFULLNAME }}
 
   comment_pr:
