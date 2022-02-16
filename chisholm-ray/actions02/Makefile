@@ -5,7 +5,7 @@
 
 build:
 		@echo "Building image with tag ${IMAGEFULLNAME}"
-	    @docker build -t ${IMAGEFULLNAME} -f chisholm-ray/actions02/Dockerfile .
+	    @docker build -t ${IMAGEFULLNAME} -f ./Dockerfile .
 
 push:
 		@echo "Pushing image with tag ${IMAGEFULLNAME} to DockerHub"
