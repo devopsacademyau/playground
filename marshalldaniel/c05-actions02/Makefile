@@ -16,3 +16,5 @@ login_dockerhub:
 .PHONY: push_image
 push_image:
 	$(DOCKERHUB_PUSH)
+	echo $(IMAGE_NAME) >> $(GITHUB_ENV)
+	echo $(SHORT_COMMIT_SHA) >> $(GITHUB_ENV)
