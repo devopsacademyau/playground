@@ -12,6 +12,9 @@ jobs:
         uses: actions/checkout@v1
 
       - name: login docker hub
+        env:
+          MARSHALLDANIEL_DH_TOKEN: ${{ secrets.MARSHALLDANIEL_DH_TOKEN }}
+          MARSHALLDANIEL_DH_NAME: ${{ secrets.MARSHALLDANIEL_DH_NAME }}
         working-directory: marshalldaniel/c05-actions02/
         run: make login_dockerhub
 
