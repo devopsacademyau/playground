@@ -1,6 +1,6 @@
 export SHORT_COMMIT_SHA = $(shell git rev-parse --short HEAD)
-export IMAGE_NAME = 'marshalldaniel/c05-actions02'
-export FULL_IMAGE_NAME = $(IMAGE_NAME):$(SHORT_COMMIT_SHA)
+export IMAGE_NAME = marshalldaniel/c05-actions02
+export FULL_IMAGE_NAME = "$(IMAGE_NAME):$(SHORT_COMMIT_SHA)"
 DOCKER_COMPOSE = docker-compose build
 DOCKERHUB_PUSH = docker push $(IMAGE_NAME):$(SHORT_COMMIT_SHA)
 
