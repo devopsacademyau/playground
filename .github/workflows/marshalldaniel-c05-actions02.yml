@@ -28,4 +28,4 @@ jobs:
         
         with:
           message: 'Image name ${{ env.IMAGE_NAME}} has been pushed to dockerhub'
-          GITHUB_TOKEN: ${{ secrets.MARSHALLDANIEL_GHKEY }}%
+          GITHUB_TOKEN: ${{ secrets.MARSHALLDANIEL_GHKEY }}
