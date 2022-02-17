@@ -11,7 +11,7 @@ build_image:
 
 .PHONY: login_dockerhub
 login_dockerhub:
-	@printf ${{ MARSHALLDANIEL_DH_TOKEN }} | docker login -u ${{ MARSHALLDANIEL_DH_NAME}} --password-stdin 
+	@echo ${{ MARSHALLDANIEL_DH_TOKEN }} | docker login -u ${{ MARSHALLDANIEL_DH_NAME}} --password-stdin 
 
 .PHONY: push_image
 push_image:
