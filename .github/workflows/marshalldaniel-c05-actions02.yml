@@ -1,7 +1,7 @@
 on:
   pull_request:
     paths:
-      - 'marshalldaniel/c05-actions-02/*'
+      - 'marshalldaniel/*'
 
 jobs:
   comment_pr:
