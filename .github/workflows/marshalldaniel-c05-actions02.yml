@@ -9,7 +9,7 @@ jobs:
     name: 3m to build, push and comment pr
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
 
       - name: login docker hub
         working-directory: marshalldaniel/c05-actions-02/
