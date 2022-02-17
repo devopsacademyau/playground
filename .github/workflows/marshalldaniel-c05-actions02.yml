@@ -23,11 +23,12 @@ jobs:
         run: make build_image
 
       - name: push docker image
+        id: push_image_id
         working-directory: marshalldaniel/c05-actions02/
         run: make push_image
 
       - name: Comment PR
         uses: thollander/actions-comment-pull-request@v1
         with:
-          message: 'Image name ${{ env.IMAGE_NAME }}:${{ env.SHORT_COMMIT_SHA }} has been pushed to dockerhub'
+          message: 'Image name ${{ steps.push_image_id.outputs.IMAGE_NAME }}:${{ env.SHORT_COMMIT_SHA }} has been pushed to dockerhub'
           GITHUB_TOKEN: ${{ secrets.MARSHALLDANIEL_GHKEY }}
