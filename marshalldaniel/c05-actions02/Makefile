@@ -17,4 +17,4 @@ login_dockerhub:
 .PHONY: push_image
 push_image:
 	$(DOCKERHUB_PUSH)
-	@echo "::set-output name=full_image_id::$(FULL_IMAGE_NAME)"
+	echo "FULLIMAGEID=$(IMAGE_NAME):$(SHORT_COMMIT_SHA)" >> $(GITHUB_ENV)
