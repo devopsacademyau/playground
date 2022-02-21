@@ -1,5 +1,5 @@
 version: '3.8'
 services:
   web:
-    image: ${IMAGE_NAME}:${SHORT_COMMIT_SHA}
+    image: ${IMAGE_NAME}:${SC_SHA}
     build: . 
